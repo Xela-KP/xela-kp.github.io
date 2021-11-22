@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora&family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Code Pro', sans-serif;
+    scroll-behavior: smooth;
+    color: hsl(0, 0%, 63%);
+}
+
+body {
+    background-color: hsl(0, 0%, 20%);
+}
+
+h1 {
+    font-size: 34px;
+}
+
+h2 {
+    font-size: 34px;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+p {
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#logo {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+
+/* Nav */
+
+#nav-bar-button {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#nav-bar {
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    background-color: hsl(0, 0%, 10%);
+    top: 0;
+    width: 100px;
+    left: -100px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0.5;
+}
+
+#nav-bar.active {
+    left: 0;
+}
+
+
+/* Nav */
+
+footer {
+    gap: 5px;
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer a,
+footer p {
+    font-family: 'Sora';
+    font-size: 12px;
+}
+
+#next-button {
+    position: fixed;
+    bottom: 50px;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    opacity: 0.2;
+}
+
+#previous-button {
+    position: fixed;
+    top: 50px;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    cursor: pointer;
+    opacity: 0.2;
+}
+
+.page {
+    position: relative;
+    min-height: 100vh;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    max-width: 720px;
+}
+
+
+/* Home Page */
+
+#about-button {
+    background-color: hsl(0, 0%, 15%);
+    padding: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 0 5px 0 5px;
+}
+
+
+/* Home Page */
+
+
+/* Projects Page */
+
+#projects-page {
+    gap: 20px;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    max-width: 600px;
+}
+
+.grid-item {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: hsl(0, 0%, 15%);
+    border: 1px solid;
+    border-color: hsl(0, 0%, 63%);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Projects page */
+
+
+/* About Page */
+
+#about-page {
+    text-align: center;
+}
+
+
+/* About Page */
+
+
+/* Contact Page */
+
+#contact-page {
+    justify-content: space-around;
+}
+
+#contact-container {
+    background-color: hsl(0, 0%, 15%);
+    padding: 20px;
+    border-radius: 0 20px 0 20px;
+    text-align: center;
+}
+
+#sender-info,
+#sender-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sender-info {
+    flex-direction: row;
+}
+
+#sender-content {
+    flex-direction: column;
+}
+
+#sender-name {
+    width: 40%;
+}
+
+#sender-email {
+    width: 60%;
+}
+
+#sender-subject {
+    width: 100%;
+}
+
+#sender-message {
+    height: 100px;
+    width: 100%;
+    resize: none;
+}
+
+#sender-submit {
+    width: 120px;
+    cursor: pointer;
+}
+
+.input-type {
+    margin: 2px;
+    background-color: hsl(0, 0%, 95%);
+    color: hsl(0, 0%, 15%);
+    border-radius: 0 5px 0 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 10px;
+}
+
+#social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#social-links a {
+    width: 24px;
+}
