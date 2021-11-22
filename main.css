@@ -67,6 +67,7 @@ a {
     justify-content: center;
     gap: 20px;
     opacity: 0.5;
+    transition: 120ms;
 }
 
 #nav-bar.active {
