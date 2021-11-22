@@ -10,10 +10,20 @@
 }
 
 body {
-    background-color: hsl(0, 0%, 20%);
+    /* background-color: hsl(0, 0%, 20%);
+     */
+    background-image: linear-gradient(hsl(0, 0%, 10%), hsl(0, 0%, 40%));
+}
+
+h1,
+h2,
+h3,
+p {
+    pointer-events: none;
 }
 
 h1 {
+    color: hsl(0, 0%, 84%);
     font-size: 34px;
 }
 
