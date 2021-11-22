@@ -61,26 +61,30 @@
         </div>
     </section>
     <section class="page" id="contact-page">
-
         <h1>Contact</h1>
         <div id="contact-container">
-            <div id="sender-info">
-                <input class="input-type" type="text" placeholder="Name" id="sender-name">
-                <input class="input-type" type="email" placeholder="Email Address" id="sender-email">
-            </div>
-            <div id="sender-content">
-                <input class="input-type" type="text" placeholder="Subject" id="sender-subject">
-                <textarea class="input-type" name="email" id="sender-message" cols="30" rows="10" placeholder="Message" maxlength="360"></textarea>
-                <input class="input-type" type="submit" value="Send" id="sender-submit">
-            </div>
+
+            <form action="https://formsubmit.co/perocho.xela@gmail.com" method="POST">
+                <div id="sender-info">
+                    <input class="input-type" type="text" name="name" placeholder="Name" id="sender-name">
+                    <input class="input-type" type="email" name="email" placeholder="Email Address" id="sender-email" required>
+                </div>
+                <div id="sender-content">
+                    <input class="input-type" type="text" name="_subject" placeholder="Subject" id="sender-subject" required>
+                    <textarea class="input-type" id="sender-message" name="comments, questions" cols="30" rows="10" placeholder="Message" maxlength="360" required></textarea>
+                    <!-- <input class="input-type" type="submit" value="Send" > -->
+                    <button class="input-type" type="submit" id="sender-submit">Send</button>
+                </div>
+            </form>
+
         </div>
         <div id="social-container">
             <p>Let's be friends</p>
             <div id="social-links">
-                <a href="https://www.instagram.com/xela_king_/" target="blank"><img src="assets/instagram.svg" alt=""></a>
-                <a href="https://vsco.co/xelakp" target="blank"><img src="assets/vsco.svg" alt=""></a>
-                <a href="https://github.com/Xela-KP/" target="blank"><img src="assets/github.svg" alt=""></a>
-                <a href="https://www.facebook.com/hagurosfire/" target="blank"><img src="assets/facebook.svg" alt=""></a>
+                <a title="instagram" href="https://www.instagram.com/xela_king_/" target="blank"><img src="assets/instagram.svg" alt=""></a>
+                <a title="vsco" href="https://vsco.co/xelakp" target="blank"><img src="assets/vsco.svg" alt=""></a>
+                <a title="github" href="https://github.com/Xela-KP/" target="blank"><img src="assets/github.svg" alt=""></a>
+                <a title="facebook" href="https://www.facebook.com/hagurosfire/" target="blank"><img src="assets/facebook.svg" alt=""></a>
             </div>
 
         </div>
