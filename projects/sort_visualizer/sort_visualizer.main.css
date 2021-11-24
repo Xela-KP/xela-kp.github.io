@@ -5,8 +5,8 @@
 table {
     background-color: hsl(0, 0%, 10%);
     border-radius: 0 10px 0 10px;
-    width: 50vw;
-    min-width: 220px;
+    width: 100%;
+    max-width: 720px;
     padding: 10px;
 }
 
