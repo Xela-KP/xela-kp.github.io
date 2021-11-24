@@ -204,6 +204,11 @@ footer p {
     justify-content: center;
 }
 
+.grid-item.complete {
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(140, 50%, 50%);
+}
+
 
 /* Projects page */
 
