@@ -205,8 +205,8 @@ footer p {
 }
 
 .grid-item.complete {
-    color: hsl(0, 0%, 100%);
-    background-color: hsl(140, 50%, 50%);
+    color: hsl(0, 0%, 15%);
+    background-color: hsl(120, 50%, 60%);
 }
 
 
