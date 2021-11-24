@@ -1,0 +1,56 @@
+#main-page {
+    background-image: linear-gradient(hsl(0, 0%, 15%), hsl(270, 50%, 50%));
+}
+
+table {
+    background-color: hsl(0, 0%, 10%);
+    border-radius: 0 10px 0 10px;
+    width: 50vw;
+    min-width: 220px;
+    padding: 10px;
+}
+
+tr {
+    background-color: hsl(0, 0%, 15%);
+}
+
+td {
+    vertical-align: bottom;
+}
+
+.bar {
+    background-color: hsl(0, 0%, 63%);
+    /* height: 50px; */
+}
+
+#console {
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 0 10px 0 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#range-container span {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#sort {
+    background-color: hsl(120, 50%, 60%);
+}
+
+#shuffle {
+    color: hsl(0, 0%, 63%);
+    background-color: hsl(0, 0%, 10%);
+}
+
+input,
+select {
+    cursor: pointer;
+}
