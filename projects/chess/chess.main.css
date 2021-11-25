@@ -1,0 +1,19 @@
+.content-container {
+    max-width: 80vh;
+}
+
+td {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+td:after {
+    content: '';
+    display: block;
+    margin-top: 100%;
+    color: hsl(44, 92%, 15%);
+}

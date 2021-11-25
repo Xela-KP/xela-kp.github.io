@@ -2,13 +2,14 @@
     background-image: linear-gradient(hsl(0, 0%, 15%), hsl(270, 50%, 50%));
 }
 
-table {
+
+/* table {
     background-color: hsl(0, 0%, 10%);
     border-radius: 0 10px 0 10px;
     width: 100%;
     max-width: 720px;
     padding: 10px;
-}
+} */
 
 tr {
     background-color: hsl(0, 0%, 15%);

@@ -127,3 +127,12 @@ footer p {
     font-weight: 900;
     padding: 10px;
 }
+
+.content-container {
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 0 10px 0 10px;
+    width: 100%;
+    text-align: center;
+    max-width: 720px;
+    padding: 10px;
+}
