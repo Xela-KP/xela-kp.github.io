@@ -1,12 +1,10 @@
 import { game } from "../model/game.js";
-import { renderBoard, renderPieces } from "../view/render.js";
-
-export const DIMENSION = 8;
+import { handleClick } from "../model/event_handlers.js"
+import { renderBoard } from "../view/render.js";
 $(function() {
-    console.log(game.chessBoard);
-    renderBoard();
-    renderPieces(game.chessBoard);
+    renderBoard(game.chessBoard);
     $('td').on('click', function() {
-        console.log($(this).prop('id'));
-    })
+        handleClick($(this).prop('id'));
+    });
+
 });

@@ -13,5 +13,3 @@ export const assets = {
     'bN': './assets/bN.svg',
     'bP': './assets/bP.svg',
 }
-
-// this.asset = `url(${assets[chess.board[position].id]})`

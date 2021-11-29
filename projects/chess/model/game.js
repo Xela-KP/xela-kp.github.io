@@ -6,7 +6,9 @@ import King from "./pieces/King.js";
 import Pawn from "./pieces/Pawn.js";
 import Tile from "./tile.js";
 
-export var game = {
+export const DIMENSION = 8;
+export const game = {
+    whiteToMove: true,
     chessBoard: [
         _createBackline(false),
         _createFrontline(false),
@@ -16,7 +18,10 @@ export var game = {
         _createEmptyRow(),
         _createFrontline(true),
         _createBackline(true)
-    ]
+    ],
+    changeTurn: () => {
+        game.whiteToMove = !game.whiteToMove;
+    }
 }
 
 function _createBackline(color) {
