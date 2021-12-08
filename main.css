@@ -122,21 +122,15 @@ footer p {
 #next-button {
     position: fixed;
     bottom: 50px;
-    z-index: 1;
     left: 50%;
     transform: translateX(-50%);
-    cursor: pointer;
-    opacity: 0.2;
 }
 
 #previous-button {
     position: fixed;
     top: 50px;
-    z-index: 1;
     left: 50%;
     transform: translateX(-50%) rotate(180deg);
-    cursor: pointer;
-    opacity: 0.2;
 }
 
 

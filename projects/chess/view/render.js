@@ -34,3 +34,24 @@ export function renderPieces(chessBoard) {
         }
     }
 }
+
+export function renderPromotion(color, activate) {
+    if (activate) {
+        $('#promotion-panel').addClass('active');
+    } else {
+        $('#promotion-panel').removeClass('active');
+        return;
+    }
+    if (color) {
+        $('#Q').attr('src', assets['wQ']);
+        $('#R').attr('src', assets['wR']);
+        $('#B').attr('src', assets['wB']);
+        $('#N').attr('src', assets['wN']);
+    } else {
+        $('#Q').attr('src', assets['bQ']);
+        $('#R').attr('src', assets['bR']);
+        $('#B').attr('src', assets['bB']);
+        $('#N').attr('src', assets['bN']);
+
+    }
+}

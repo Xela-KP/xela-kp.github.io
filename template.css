@@ -136,3 +136,9 @@ footer p {
     max-width: 720px;
     padding: 10px;
 }
+
+.svg-button {
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0.4;
+}

@@ -1,5 +1,7 @@
-.content-container {
+#table-container {
     max-width: 80vh;
+    min-height: 240px;
+    min-width: 240px;
 }
 
 td {
@@ -16,4 +18,20 @@ td:after {
     display: block;
     margin-top: 100%;
     color: hsl(44, 92%, 15%);
+}
+
+#promotion-panel {
+    display: none;
+    position: absolute;
+    width: auto;
+    background-color: hsl(30, 50%, 40%);
+    border: 5px solid hsl(44, 92%, 15%);
+}
+
+#promotion-panel.active {
+    display: unset;
+}
+
+.promotion-option {
+    opacity: 1;
 }
