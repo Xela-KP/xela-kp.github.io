@@ -21,5 +21,4 @@ export function handleUndo() {
 export function handlePromotion(id) {
     game.promote(id);
     renderPieces(game.chessBoard);
-    renderPromotion(false);
 }

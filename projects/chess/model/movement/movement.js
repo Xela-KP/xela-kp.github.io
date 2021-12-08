@@ -4,7 +4,7 @@ import King from "../classes/King.js";
 import Knight from "../classes/Knight.js";
 import Pawn from "../classes/Pawn.js";
 import Queen from "../classes/Queen.js";
-import { renderPromotion } from "../../view/render.js";
+import { renderEndScreen, renderPromotion } from "../../view/render.js";
 
 export function attemptMove(from, to) {
     const fromPos = getLogicPosition(from);
@@ -15,26 +15,25 @@ export function attemptMove(from, to) {
         const specialMove = moveIsSpecial(fromPos, toPos);
         console.log('special move:', specialMove);
         if (specialMove.castle) {
-            castle(fromPos, toPos);
+            game.castle(fromPos, toPos);
         } else if (specialMove.enPassant) {
-            enPassant(fromPos, toPos);
-        } else if (specialMove.promote) {
-            promote(toPos);
+            game.enPassant(fromPos, toPos);
+        } else {
+            if (specialMove.promote) {
+                renderPromotion(game.whiteToMove, true);
+                game.promotion.color = game.whiteToMove;
+                game.promotion.position = toPos;
+            }
+            game.move(
+                game.chessBoard[fromPos.y][fromPos.x],
+                game.chessBoard[toPos.y][toPos.x]
+            );
         }
-        game.move(
-            game.chessBoard[fromPos.y][fromPos.x],
-            game.chessBoard[toPos.y][toPos.x]
-        );
         if (legalCheck()) {
             game.changeTurn();
         } else {
             console.log('Not a legal Move');
-            if (specialMove.castle || specialMove.enPassant || specialMove.promote) {
-                game.undo();
-                game.undo();
-            } else {
-                game.undo();
-            }
+            game.undo();
         }
     }
     console.log('saves:', game.saves);
@@ -97,8 +96,12 @@ function legalCheck() {
     } else if (game.getCheck(!game.whiteToMove)) {
         console.log("PLAYER PUT OPPONENT IN CHECK");
         game.colorInCheck = !game.whiteToMove;
-        const mate = game.getMate(game.colorInCheck);
-        // console.log('mate:', mate)
+        if (game.getEscape(!game.whiteToMove)) {
+            renderEndScreen(true);
+        };
+    } else if (game.getEscape(!game.whiteToMove)) {
+        renderEndScreen(false);
+        console.log('DRAW');
     } else {
         game.colorInCheck = null;
     }
@@ -106,24 +109,3 @@ function legalCheck() {
     return true;
 }
 // Special Moves
-function castle(fromPos, toPos) {
-    console.log('Castling');
-    if (toPos.x - fromPos.x < 0) {
-        game.move(game.chessBoard[fromPos.y][0],
-            game.chessBoard[fromPos.y][3]);
-    } else if (0 < toPos.x - fromPos.x) {
-        game.move(game.chessBoard[fromPos.y][7],
-            game.chessBoard[fromPos.y][5]);
-    }
-}
-
-function enPassant(fromPos, toPos) {
-    game.take(game.chessBoard[fromPos.y][toPos.x]);
-}
-
-function promote(toPos) {
-    renderPromotion(game.whiteToMove, true);
-    game.promotion.color = game.whiteToMove;
-    game.promotion.position = toPos;
-    // game.take(fromPos);
-}

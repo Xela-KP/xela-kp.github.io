@@ -35,13 +35,8 @@ export function renderPieces(chessBoard) {
     }
 }
 
-export function renderPromotion(color, activate) {
-    if (activate) {
-        $('#promotion-panel').addClass('active');
-    } else {
-        $('#promotion-panel').removeClass('active');
-        return;
-    }
+export function renderPromotion(color) {
+    $('#promotion-panel').addClass('active');
     if (color) {
         $('#Q').attr('src', assets['wQ']);
         $('#R').attr('src', assets['wR']);
@@ -54,4 +49,14 @@ export function renderPromotion(color, activate) {
         $('#N').attr('src', assets['bN']);
 
     }
+}
+
+export function renderEndScreen(mate) {
+    console.log($('#end-screen h1'))
+    if (mate) {
+        $('#end-screen h1').text('Checkmate!');
+    } else {
+        $('#end-screen h1').text('Draw!');
+    }
+    $('#end-screen').addClass('active');
 }

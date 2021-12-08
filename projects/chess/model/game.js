@@ -7,6 +7,8 @@ import Pawn from "./classes/Pawn.js";
 import Tile from "./classes/Tile.js";
 
 export const DIMENSION = 8;
+// TODO: Fix Castle doesn't work in certain situations??
+// Undoing Castle or En Passant only undo 1 turn.
 export var game = {
     saves: new Array(),
     whiteToMove: true,
@@ -57,8 +59,9 @@ export var game = {
     },
     undo: () => {
         console.groupCollapsed('Reverting Game');
-        if (game.saves.length > 0) {
-            game = game.saves.pop();
+        const save = game.saves.pop();
+        if (save !== undefined) {
+            game = save;
             game.logCurrentBoard();
         } else {
             console.log('CANNOT UNDO');
@@ -79,9 +82,27 @@ export var game = {
         game.logCurrentBoard();
         console.groupEnd();
     },
-    take: (tile) => {
+    enPassant: (fromPos, toPos) => {
         game.saveGame();
-        tile.heldPiece = null;
+        console.groupCollapsed('attempting EnPassant');
+        game.chessBoard[toPos.y][toPos.x].heldPiece = game.chessBoard[fromPos.y][fromPos.x].heldPiece;
+        game.chessBoard[fromPos.y][fromPos.x].heldPiece = null;
+        game.chessBoard[fromPos.y][toPos.x].heldPiece = null;
+        console.groupEnd();
+    },
+    castle: (fromPos, toPos) => {
+        game.saveGame();
+        console.groupCollapsed('attempting Castle');
+        game.chessBoard[toPos.y][toPos.x].heldPiece = game.chessBoard[fromPos.y][fromPos.x].heldPiece;
+        game.chessBoard[fromPos.y][fromPos.x].heldPiece = null;
+        if (toPos.x - fromPos.x < 0) {
+            game.chessBoard[fromPos.y][3].heldPiece = game.chessBoard[fromPos.y][0].heldPiece;
+            game.chessBoard[fromPos.y][0].heldPiece = null;
+        } else {
+            game.chessBoard[fromPos.y][5].heldPiece = game.chessBoard[fromPos.y][7].heldPiece;
+            game.chessBoard[fromPos.y][7].heldPiece = null;
+        }
+        console.groupEnd();
     },
     promote: (id) => {
         console.groupCollapsed('Attempting promotion', game.promotion, id);
@@ -167,8 +188,8 @@ export var game = {
         console.groupEnd();
         return false;
     },
-    getMate: (color) => {
-        console.groupCollapsed('Checking Mate on King', color);
+    getEscape: (color) => {
+        console.groupCollapsed('Checking if King Can Escape', color);
         for (let y = 0; y < DIMENSION; y++) {
             for (let x = 0; x < DIMENSION; x++) {
                 if (!game.chessBoard[y][x].isEmpty() && game.chessBoard[y][x].heldPiece.color === color) {
@@ -181,6 +202,7 @@ export var game = {
                             game.undo();
                             console.log('CAN ESCAPE:', canEscape);
                             if (canEscape) {
+                                console.log(moveSet);
                                 console.groupEnd();
                                 return false
                             };
@@ -192,6 +214,9 @@ export var game = {
         console.log('CHECKMATE');
         console.groupEnd();
         return true;
+    },
+    getDraw: (color) => {
+
     },
     moveInSet: (fromPos, toPos) => {
         const moveSet = game.chessBoard[fromPos.y][fromPos.x].heldPiece.getMoveSet(fromPos);
@@ -262,91 +287,3 @@ function _createEmptyRow() {
         new Tile(null),
     ]
 }
-
-
-// King Conditions
-
-// function checkConditions() {
-//     if (game.getCheck(game.whiteToMove)) {
-//         console.log("CURRENT PLAYER IS IN CHECK");
-//         return false
-//     } else if (game.getCheck(!game.whiteToMove)) {
-//         console.log("PLAYER PUT OPPONENT IN CHECK");
-//         game.colorInCheck = !game.whiteToMove;
-
-//         const mate = getMate(game.colorInCheck);
-//         console.log('mate:', mate)
-//     } else {
-//         game.colorInCheck = null;
-//     }
-//     return true;
-// }
-
-// function getMate(color) {
-//     console.log('Checking Mate on King', color);
-//     for (let y = 0; y < DIMENSION; y++) {
-//         for (let x = 0; x < DIMENSION; x++) {
-//             const tile = game.chessBoard[y][x];
-
-//             if (!tile.isEmpty() && tile.heldPiece.color === color) {
-//                 const moveSet = tile.heldPiece.getMoveSet({ y: y, x: x });
-
-//                 for (let i = 0; i < moveSet.length; i++) {
-//                     const move = moveSet[i];
-//                     console.log('checking', tile, 'moves');
-//                     if (_legalMove(moveSet, { x: move.x, y: move.y })) {
-//                         game.move(tile, game.chessBoard[move.y][move.x]);
-//                         const canEscape = !game.getCheck(color);
-//                         game.undo();
-//                         console.log('CAN ESCAPE:', false);
-//                         if (canEscape) return false;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     console.log('CHECKMATE');
-//     return true;
-// }
-
-// function getCheck(color) {
-//     const kingTile = _getKingTile(color);
-//     const kingPosition = { x: kingTile.x, y: kingTile.y };
-//     const pawnMoveSet = new Pawn('tempP', color).getMoveSet(kingPosition);
-//     const knightMoveSet = new Knight('tempN', color).getMoveSet(kingPosition);
-//     const queenMoveSet = new Queen('tempQ', color).getMoveSet(kingPosition);
-//     const kingMoveSet = kingTile.tile.heldPiece.getMoveSet(kingPosition);
-//     const moveSets = [
-//         { set: pawnMoveSet, class: Pawn },
-//         { set: knightMoveSet, class: Knight },
-//         { set: queenMoveSet, class: Queen },
-//         { set: kingMoveSet, class: King }
-//     ];
-
-//     for (let i = 0; i < moveSets.length; i++) {
-//         const moveSet = moveSets[i];
-//         for (let j = 0; j < moveSet.set.length; j++) {
-//             const position = moveSet.set[j];
-//             const posTile = game.chessBoard[position.y][position.x];
-//             if (!posTile.isEmpty() &&
-//                 posTile.heldPiece.color !== color &&
-//                 position.isThreat &&
-//                 (
-//                     posTile.heldPiece instanceof moveSet.class ||
-//                     moveSet.class === Queen && posTile.heldPiece.LRP
-//                 )
-//             ) return true;
-//         }
-//     }
-//     return false;
-// }
-
-// function _getKingTile(color) {
-//     for (let y = 0; y < DIMENSION; y++) {
-//         for (let x = 0; x < DIMENSION; x++) {
-//             const tile = game.chessBoard[y][x];
-//             const heldPiece = tile.heldPiece;
-//             if (heldPiece !== null && heldPiece.color === color && heldPiece instanceof King) return { x: x, y: y, tile: tile };
-//         }
-//     }
-// }

@@ -20,7 +20,8 @@ td:after {
     color: hsl(44, 92%, 15%);
 }
 
-#promotion-panel {
+#promotion-panel,
+#end-screen {
     display: none;
     position: absolute;
     width: auto;
@@ -28,7 +29,8 @@ td:after {
     border: 5px solid hsl(44, 92%, 15%);
 }
 
-#promotion-panel.active {
+#promotion-panel.active,
+#end-screen.active {
     display: unset;
 }
 
