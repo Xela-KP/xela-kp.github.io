@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XelaDEV</title>
+    <title>xela-dev</title>
 
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="template.css">
@@ -17,45 +17,51 @@
 </head>
 
 <body>
-    <!-- Nav -->
-    <img id="nav-bar-button" src="assets/menu_white_36dp.svg" alt="">
     <nav class="nav-bar" id="nav-bar">
         <div class="nav-item"><a href="#">Home</a></div>
         <div class="nav-item"><a href="#about-page">About</a></div>
         <div class="nav-item"><a href="#projects-page">Projects</a></div>
-        <div class="nav-item"><a href="#contact-page">Contact</a></div>
         <div class="nav-item"><a href="assets/resume.pdf" target="blank">Resume</a></div>
     </nav>
-    <!-- Nav -->
-    <img class="svg-button" id="next-button" src="assets/expand_more_white_48dp.svg" alt="">
-    <img class="svg-button" id="previous-button" src="assets/expand_more_white_48dp.svg" alt="">
-
+    <div id="social-container">
+        <div id="social-links">
+            <a title="instagram" href="https://www.instagram.com/xela_king_/" target="blank"><img
+                    src="assets/instagram.svg" alt=""></a>
+            <a title="vsco" href="https://vsco.co/xelakp" target="blank"><img src="assets/vsco.svg" alt=""></a>
+            <a title="github" href="https://github.com/Xela-KP/" target="blank"><img src="assets/github.svg" alt=""></a>
+            <a title="facebook" href="https://www.facebook.com/hagurosfire/" target="blank"><img
+                    src="assets/facebook.svg" alt=""></a>
+            <a title="linkedin" href="https://www.linkedin.com/in/perocho-xela/" target="blank"><img
+                    src="assets/linkedin.svg" alt=""></a>
+        </div>
+    </div>
     <section class="page" id="home-page">
         <div class="page-bio">
             <h1>Hi, I'm Alexander Perocho!</h1>
             <h3>Welcome to my website!</h3>
             <a href="#about-page">
-                <div id="about-button">
-                    <p>About</p>
-                </div>
+                <img id="down-button" src="/assets/arrow_down.svg">
             </a>
         </div>
     </section>
-
     <section class="page" id="about-page">
         <div class="page-bio">
             <h1>About</h1>
             <p>
-                Hello! My name is Alexander King Perocho. I am a self-taught computer programmer and my passion is to become a full-stack developer! <br><br> I discovered programming at the age of 15, and fell in love with coding ever since. Take a look
-                at some of the
-                <a href="#projects-page">projects</a> I have completed thus far!
+                Hey! I'm Alex Perocho, a self-taught coding enthusiast aspiring to master the art of full-stack
+                development!
+                <br><br>I started coding at 15, got hooked, and now I'm diving deep into Computer Science at the
+                University of Western Ontario.
+                <br><br>What do I do? I build stuff. Check out my
+                <a href="#projects-page">projects</a>
+                —they're like my digital playground.
             </p>
         </div>
     </section>
     <section class="page" id="projects-page">
         <div class="page-bio">
             <h1>Projects</h1>
-            <p>This is a collection of all the projects I have completed thus far</p>
+            <p>A collection of rabbit-hole obsessions brought to life.</p>
         </div>
         <div class="grid-container">
             <a href="projects/chess/chess.index.html">
@@ -64,48 +70,14 @@
             <a href="projects/sort_visualizer/sort_visualizer.index.html">
                 <div class="grid-item complete">Sort Visual</div>
             </a>
-            <!-- <div class="grid-item">Path Finding</div>
-            <div class="grid-item">Fun Web Stuff</div> -->
+            <!-- <div class="grid-item">DFS Maze</div>
+            <div class="grid-item">Pay Roll</div> -->
         </div>
-    </section>
-    <section class="page" id="contact-page">
-        <h1>Contact</h1>
-        <div class="content-container" id="contact-container">
-
-            <!-- <form action="https://formsubmit.co/b1378c75525f7e0a5a83a4e0f0d50eb9" method="POST"> -->
-            <form action="https://formsubmit.co/perocho.xela@gmail.com" method="POST">
-                <div id="sender-info">
-                    <input class="input-type" type="text" name="name" placeholder="Name" id="sender-name">
-                    <input class="input-type" type="email" name="email" placeholder="Email Address" id="sender-email" required>
-                </div>
-                <div id="sender-content">
-                    <input class="input-type" type="text" name="_subject" placeholder="Subject" id="sender-subject" required>
-                    <textarea class="input-type" id="sender-message" name="comments, questions" cols="30" rows="10" placeholder="Message" maxlength="360" required></textarea>
-                    <!-- <input class="input-type" type="submit" value="Send" > -->
-                    <button class="input-type" type="submit" id="sender-submit">Send</button>
-                </div>
-            </form>
-
-        </div>
-        <div id="social-container">
-            <p>Let's be friends</p>
-            <div id="social-links">
-                <a title="instagram" href="https://www.instagram.com/xela_king_/" target="blank"><img src="assets/instagram.svg" alt=""></a>
-                <a title="vsco" href="https://vsco.co/xelakp" target="blank"><img src="assets/vsco.svg" alt=""></a>
-                <a title="github" href="https://github.com/Xela-KP/" target="blank"><img src="assets/github.svg" alt=""></a>
-                <a title="facebook" href="https://www.facebook.com/hagurosfire/" target="blank"><img src="assets/facebook.svg" alt=""></a>
-                <a title="linkedin" href="https://www.linkedin.com/in/perocho-xela/" target="blank"><img src="assets/linkedin.svg" alt=""></a>
-            </div>
-
-        </div>
-
-
         <footer>
             <a href="mailto:perocho.xela@gmail.com">perocho.xela@gmail.com</a>
             <p>&copy2021 PerochoDev. All Rights Reserved.</p>
         </footer>
     </section>
-
 </body>
 
 </html>
